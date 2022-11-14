@@ -16,7 +16,7 @@ namespace Snake2._0
                 {
                     for (int j = 0; j < x; j++)
                     {
-                        if (map[i, j] == 1 && (map[i, j + 1] == -1 || map[i, j + 1] >= 1))
+                        if (map[i, j] == 1 && (map[i, j + 1] == -1 || (map[i, j + 1] >= 1 && map[i, j+ 1] != length + 1)))
                         {
                             lose = true;
                             YouLose();
@@ -29,7 +29,8 @@ namespace Snake2._0
                             if (map[i, j + 1] == -2)//eaten logic
                             {
                                 length += 1;
-                                if (length == (x - 2) * (y - 2))
+                                emptyPlace--;
+                                if (emptyPlace <= 1)
                                 {
                                     win = true;
                                     YouWin();
@@ -62,7 +63,8 @@ namespace Snake2._0
                             if (map[i, j - 1] == -2)
                             {
                                 length += 1;
-                                if (length == (x - 2) * (y - 2))
+                                emptyPlace--;
+                                if (emptyPlace <= 1)
                                 {
                                     win = true;
                                     YouWin();
@@ -93,7 +95,8 @@ namespace Snake2._0
                             if (map[i - 1, j] == -2)
                             {
                                 length += 1;
-                                if (length == (x - 2) * (y - 2))
+                                emptyPlace--;
+                                if (emptyPlace <= 1)
                                 {
                                     win = true;
                                     YouWin();
@@ -124,7 +127,8 @@ namespace Snake2._0
                             if (map[i + 1, j] == -2)
                             {
                                 length += 1;
-                                if (length == (x - 2) * (y - 2))
+                                emptyPlace--;
+                                if (emptyPlace <= 1)
                                 {
                                     win = true;
                                     YouWin();
@@ -175,7 +179,7 @@ namespace Snake2._0
                     DrawFood();
                     updatefood = false;
                 }
-                DrawSnake();
+                DrawMap();
             }
         }
     }

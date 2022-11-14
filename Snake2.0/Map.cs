@@ -14,6 +14,7 @@ namespace Snake2._0
         int posX = 0;
         int posY = 0;
         int length;
+        int emptyPlace;
         bool updatefood = false;
         public bool lose { get; set; } = false;
         public bool win { get; set; } = false;
@@ -44,6 +45,10 @@ namespace Snake2._0
                     {
                         map[i, j] = -1;
                     }
+                    if (map[i,j] == 0)
+                    {
+                        emptyPlace += 1;
+                    }
                 }
             }
         }
@@ -59,6 +64,21 @@ namespace Snake2._0
                         Console.Write('#');
                     }
                     if (map[i, j] == 0)
+                    {
+                        Console.SetCursorPosition(j, i);
+                        Console.Write(' ');
+                    }
+                    if (map[i, j] == 1)
+                    {
+                        Console.SetCursorPosition(j, i);
+                        Console.Write('@');
+                    }
+                    if (map[i, j] > 1)
+                    {
+                        Console.SetCursorPosition(j, i);
+                        Console.Write('*');
+                    }
+                    if (map[i, j] == length + 1)
                     {
                         Console.SetCursorPosition(j, i);
                         Console.Write(' ');
@@ -83,34 +103,10 @@ namespace Snake2._0
             }
 
         }
-        private void DrawSnake()
-        {
-            for (int i = 0; i < y; i++)
-            {
-                for (int j = 0; j < x; j++)
-                {
-                    if (map[i, j] == 1)
-                    {
-                        Console.SetCursorPosition(j, i);
-                        Console.Write('@');
-                    }
-                    if (map[i, j] > 1)
-                    {
-                        Console.SetCursorPosition(j, i);
-                        Console.Write('*');
-                    }
-                    if (map[i, j] == length + 1)
-                    {
-                        Console.SetCursorPosition(j, i);
-                        Console.Write(' ');
-                    }
-                }
-            }
-        }
         public void Start()
         {
             DrawFood();
-            DrawSnake();
+            DrawMap();
         }
         private void YouLose()
         {
