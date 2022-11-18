@@ -20,7 +20,6 @@ namespace Snake2._0
             map[y / 2, x / 2] = 1;
             map[y / 2, x / 2 - 1] = 2;
             map[y / 2, x / 2 - 2] = 3;
-            map[y / 2, x / 2 - 3] = 4;
         }
         private void InitializeMap()
         {
