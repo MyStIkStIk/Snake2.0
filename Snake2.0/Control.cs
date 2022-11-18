@@ -10,7 +10,7 @@ namespace Snake2._0
         Left,
         Right
     }
-    internal static class Direction
+    internal static class Control
     {
         public static Direct MyDirection { get; set; } = Direct.Right;
         public static bool Speed { get; set; } = false;
@@ -22,26 +22,29 @@ namespace Snake2._0
 
                 if (key.Key == ConsoleKey.Spacebar)
                 {
-                    Speed = true;
+                    if (Speed == true)
+                        Speed = false;
+                    else
+                        Speed = true;
                 }
                 else
                 {
                     Speed = false;
                 }
 
-                if (key.Key == ConsoleKey.UpArrow || key.Key == ConsoleKey.W && MyDirection != Direct.Bottom)
+                if ((key.Key == ConsoleKey.UpArrow || key.Key == ConsoleKey.W) && MyDirection != Direct.Bottom)
                 {
                     MyDirection = Direct.Top;
                 }
-                else if (key.Key == ConsoleKey.DownArrow || key.Key == ConsoleKey.S && MyDirection != Direct.Top)
+                else if ((key.Key == ConsoleKey.DownArrow || key.Key == ConsoleKey.S) && MyDirection != Direct.Top)
                 {
                     MyDirection = Direct.Bottom;
                 }
-                else if (key.Key == ConsoleKey.RightArrow || key.Key == ConsoleKey.D && MyDirection != Direct.Left)
+                else if ((key.Key == ConsoleKey.RightArrow || key.Key == ConsoleKey.D) && MyDirection != Direct.Left)
                 {
                     MyDirection = Direct.Right;
                 }
-                else if (key.Key == ConsoleKey.LeftArrow || key.Key == ConsoleKey.A && MyDirection != Direct.Right)
+                else if ((key.Key == ConsoleKey.LeftArrow || key.Key == ConsoleKey.A) && MyDirection != Direct.Right)
                 {
                     MyDirection = Direct.Left;
                 }

@@ -6,8 +6,6 @@ namespace Snake2._0
 {
     internal static class StartGame
     {
-        static int x = MapSize.Width;
-        static int y = MapSize.Height;
         public static int speed = 250;
         static Map map;
         public static void LoadGame()
@@ -23,26 +21,21 @@ namespace Snake2._0
             {
                 Console.Clear();
                 Console.CursorVisible = false;
-                Console.SetWindowSize(x, y);
-                Console.SetBufferSize(x, y);
-                map = new Map(x, y - 1);
-                map.DrawMap();
+                Console.SetWindowSize(MapSize.Width, MapSize.Height);
+                Console.SetBufferSize(MapSize.Width, MapSize.Height);
+                map = new Map();
                 map.Start();
-                Task.Run(() => Direction.SetDirection());
+                Task.Run(() => Control.SetDirection());
                 while (!map.lose && !map.win)
                 {
-                    Start();
-                    if (Direction.Speed)
-                        speed = 100;
+                    map.UpdateMap();
+                    if (Control.Speed)
+                        speed = 70;
                     else
                         speed = 250;
                     Thread.Sleep(speed);
                 }
             }
-        }
-        private static void Start()
-        {
-            map.UpdateMap();
         }
     }
 }

@@ -5,22 +5,17 @@ namespace Snake2._0
     internal partial class Map
     {
         static int[,] map;
-        readonly int x;
-        readonly int y;
-        int posX = 0;
-        int posY = 0;
-        int length;
-        int emptyPlace;
-        bool updatefood = false;
-        public bool lose { get; set; } = false;
-        public bool win { get; set; } = false;
-        public Map(int windowWidth, int windowHeight)
+        readonly int x;//высота
+        readonly int y;//ширина
+        int emptyPlace;//для метода выигрыша, когда останется 1 или 0, то победа
+        public bool lose { get; set; } = false;//для цикла в StartGame
+        public bool win { get; set; } = false;//для цикла в StartGame
+        public Map()
         {
-            x = windowWidth;
-            y = windowHeight;
-            map = new int[windowHeight, windowWidth];
+            x = MapSize.Width;
+            y = MapSize.Height - 1;
+            map = new int[y, x];
             InitializeMap();
-            DrawMap();
             length = 3;
             map[y / 2, x / 2] = 1;
             map[y / 2, x / 2 - 1] = 2;
@@ -29,15 +24,15 @@ namespace Snake2._0
         }
         private void InitializeMap()
         {
-            for (int i = 0; i < map.GetLength(0); i++)
+            for (int i = 0; i < y; i++)
             {
-                for (int j = 0; j < map.GetLength(1); j++)
+                for (int j = 0; j < x; j++)
                 {
-                    if (i == 0 || i == map.GetLength(0) - 1)
+                    if (i == 0 || i == y - 1)
                     {
                         map[i, j] = -1;
                     }
-                    if (j == 0 || j == map.GetLength(1) - 1)
+                    if (j == 0 || j == x - 1)
                     {
                         map[i, j] = -1;
                     }
@@ -47,8 +42,8 @@ namespace Snake2._0
                     }
                 }
             }
-        }
-        public void DrawMap()
+        }//инициализация поля, создание стенок
+        private void DrawMap()
         {
             for (int i = 0; i < y; i++)
             {
@@ -81,7 +76,7 @@ namespace Snake2._0
                     }
                 }
             }
-        }
+        }//отрисовка карты вместо со змейкой
         private void DrawFood()
         {
             Random random = new Random();
@@ -98,12 +93,12 @@ namespace Snake2._0
                 }
             }
 
-        }
+        }//создание и отрисовка еды
         public void Start()
         {
-            DrawFood();
             DrawMap();
-        }
+            DrawFood();
+        }//первичная отрисовка
         private void YouLose()
         {
             Console.Clear();
