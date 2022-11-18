@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Snake2._0
+﻿namespace Snake2._0
 {
     internal partial class Map
     {
@@ -16,7 +10,7 @@ namespace Snake2._0
                 {
                     for (int j = 0; j < x; j++)
                     {
-                        if (map[i, j] == 1 && (map[i, j + 1] == -1 || (map[i, j + 1] >= 1 && map[i, j+ 1] != length + 1)))
+                        if (map[i, j] == 1 && (map[i, j + 1] == -1 || (map[i, j + 1] >= 1 && map[i, j + 1] != length + 1)))
                         {
                             lose = true;
                             YouLose();
@@ -167,7 +161,7 @@ namespace Snake2._0
                 {
                     for (int j = 0; j < x; j++)
                     {
-                        if (map[i,j] == -2)
+                        if (map[i, j] == -2)
                         {
                             updatefood = false;
                             break;

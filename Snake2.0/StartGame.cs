@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -11,6 +8,7 @@ namespace Snake2._0
     {
         static int x = MapSize.Width;
         static int y = MapSize.Height;
+        public static int speed = 250;
         static Map map;
         public static void LoadGame()
         {
@@ -34,7 +32,11 @@ namespace Snake2._0
                 while (!map.lose && !map.win)
                 {
                     Start();
-                    Thread.Sleep(250);
+                    if (Direction.Speed)
+                        speed = 100;
+                    else
+                        speed = 250;
+                    Thread.Sleep(speed);
                 }
             }
         }

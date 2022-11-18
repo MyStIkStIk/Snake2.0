@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Snake2._0
 {
@@ -45,7 +41,7 @@ namespace Snake2._0
                     {
                         map[i, j] = -1;
                     }
-                    if (map[i,j] == 0)
+                    if (map[i, j] == 0)
                     {
                         emptyPlace += 1;
                     }
