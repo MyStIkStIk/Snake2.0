@@ -12,7 +12,7 @@
                 for (int j = 0; j < x; j++)
                 {
 
-                    if (map[i, j] == 1)
+                    if (map[i, j] == (int)Elements.Head)
                     {
                         SnakeMovementAccess(i, j);
                         return;
@@ -39,7 +39,7 @@
             {
                 for (int j = 0; j < x; j++)
                 {
-                    if (map[i, j] == -2)
+                    if (map[i, j] == (int)Elements.Apple)
                     {
                         return false;
                     }
@@ -53,7 +53,7 @@
             {
                 for (int j = 0; j < x; j++)
                 {
-                    if (map[i, j] >= 1)
+                    if (map[i, j] >= (int)Elements.Head)
                     {
                         map[i, j] += 1;
                     }
@@ -67,12 +67,12 @@
         }//обновление числовых значений массива(змейки)
         private void IsDead()
         {
-            if (map[posY, posX] == -1 || map[posY, posX] >= 1)
+            if (map[posY, posX] == (int)Elements.Wall || map[posY, posX] >= (int)Elements.Head)
             {
                 lose = true;
                 YouLose();
             }
-            if (map[posY, posX] == -2)//eaten logic
+            if (map[posY, posX] == (int)Elements.Apple)//eaten logic
             {
                 length += 1;
                 emptyPlace--;

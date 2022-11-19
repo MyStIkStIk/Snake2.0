@@ -2,6 +2,12 @@
 
 namespace Snake2._0
 {
+    enum Elements
+    {
+        Apple = -2,
+        Wall = -1,
+        Head = 1//всё, что больше числового значения головы - тело
+    }
     internal partial class Map
     {
         static int[,] map;
@@ -29,11 +35,11 @@ namespace Snake2._0
                 {
                     if (i == 0 || i == y - 1)
                     {
-                        map[i, j] = -1;
+                        map[i, j] = (int)Elements.Wall;
                     }
                     if (j == 0 || j == x - 1)
                     {
-                        map[i, j] = -1;
+                        map[i, j] = (int)Elements.Wall;
                     }
                     if (map[i, j] == 0)
                     {
@@ -48,7 +54,7 @@ namespace Snake2._0
             {
                 for (int j = 0; j < x; j++)
                 {
-                    if (map[i, j] == -1)
+                    if (map[i, j] == (int)Elements.Wall)
                     {
                         Console.SetCursorPosition(j, i);
                         Console.Write('#');
@@ -58,21 +64,21 @@ namespace Snake2._0
                         Console.SetCursorPosition(j, i);
                         Console.Write(' ');
                     }
-                    if (map[i, j] == 1)
+                    if (map[i, j] == (int)Elements.Head)
                     {
                         Console.SetCursorPosition(j, i);
                         Console.Write('@');
                     }
-                    if (map[i, j] > 1)
+                    if (map[i, j] > (int)Elements.Head)
                     {
                         Console.SetCursorPosition(j, i);
                         Console.Write('*');
                     }
-                    if (map[i, j] == length + 1)
-                    {
-                        Console.SetCursorPosition(j, i);
-                        Console.Write(' ');
-                    }
+                    //if (map[i, j] == length + 1)
+                    //{
+                    //    Console.SetCursorPosition(j, i);
+                    //    Console.Write(' ');
+                    //}
                 }
             }
         }//отрисовка карты вместо со змейкой
