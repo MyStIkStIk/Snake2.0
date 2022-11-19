@@ -67,7 +67,7 @@
         }//обновление числовых значений массива(змейки)
         private void IsDead()
         {
-            if (map[posY, posX] == -1)
+            if (map[posY, posX] == -1 || map[posY, posX] >= 1)
             {
                 lose = true;
                 YouLose();
@@ -82,7 +82,7 @@
                     YouWin();
                 }
             }
-        }//проверка или не врезалась змейка
+        }//проверка или не врезалась змейка и на победу
         private void SnakeMovementAccess(int i, int j)//обновление позиции головы и передача координат в переменные
         {
             if (Control.MyDirection == Direct.Right)

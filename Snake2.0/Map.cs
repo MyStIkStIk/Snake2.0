@@ -10,7 +10,7 @@ namespace Snake2._0
         int emptyPlace;//для метода выигрыша, когда останется 1 или 0, то победа
         public bool lose { get; set; } = false;//для цикла в StartGame
         public bool win { get; set; } = false;//для цикла в StartGame
-        public Map()
+        public Map() 
         {
             x = MapSize.Width;
             y = MapSize.Height - 1;

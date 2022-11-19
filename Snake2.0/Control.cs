@@ -16,7 +16,7 @@ namespace Snake2._0
         public static bool Speed { get; set; } = false;
         public static void SetDirection()
         {
-            while (true)
+            while (!StartGame.myMap.lose && !StartGame.myMap.win)
             {
                 ConsoleKeyInfo key = Console.ReadKey(true);
 
@@ -47,6 +47,14 @@ namespace Snake2._0
                 else if ((key.Key == ConsoleKey.LeftArrow || key.Key == ConsoleKey.A) && MyDirection != Direct.Right)
                 {
                     MyDirection = Direct.Left;
+                }
+                if (Speed)
+                {
+                    Thread.Sleep(70);
+                }
+                else
+                {
+                    Thread.Sleep(250);
                 }
             }
         }

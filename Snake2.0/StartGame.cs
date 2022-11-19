@@ -7,7 +7,7 @@ namespace Snake2._0
     internal static class StartGame
     {
         public static int speed = 250;
-        static Map map;
+        public static Map myMap { get; set; }
         public static void LoadGame()
         {
             Console.Clear();
@@ -23,12 +23,12 @@ namespace Snake2._0
                 Console.CursorVisible = false;
                 Console.SetWindowSize(MapSize.Width, MapSize.Height);
                 Console.SetBufferSize(MapSize.Width, MapSize.Height);
-                map = new Map();
-                map.Start();
+                myMap = new Map();
+                myMap.Start();
                 Task.Run(() => Control.SetDirection());
-                while (!map.lose && !map.win)
+                while (!myMap.lose && !myMap.win)
                 {
-                    map.UpdateMap();
+                    myMap.UpdateMap();
                     if (Control.Speed)
                         speed = 70;
                     else

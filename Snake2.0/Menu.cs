@@ -10,16 +10,16 @@ namespace Snake2._0
             while (!closeGame)
             {
                 MenuText();
-                string key = Console.ReadKey().Key.ToString();
-                switch (key)
+                ConsoleKeyInfo key = Console.ReadKey();
+                switch (key.Key)
                 {
-                    case "G":
-                        Start();
+                    case ConsoleKey.G:
+                        StartGame.LoadGame();
                         break;
-                    case "S":
-                        ChangeSize();
+                    case ConsoleKey.S:
+                        MapSize.ShowMenu();
                         break;
-                    case "Q":
+                    case ConsoleKey.Q:
                         closeGame = true;
                         break;
                     default:
@@ -36,14 +36,6 @@ namespace Snake2._0
             Console.WriteLine("Нажмите G для старта");
             Console.WriteLine("Нажмите S для изменения размера карты");
             Console.WriteLine("Нажмите Q для выхода");
-        }
-        public static void Start()
-        {
-            StartGame.LoadGame();
-        }
-        public static void ChangeSize()
-        {
-            MapSize.ShowMenu();
         }
     }
 }
