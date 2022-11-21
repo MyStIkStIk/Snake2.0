@@ -6,7 +6,8 @@ namespace Snake2._0
     {
         Apple = -2,
         Wall = -1,
-        Head = 1//всё, что больше числового значения головы - тело
+        Head = 1,//всё, что больше числового значения головы - тело
+        Empty = 0
     }
     internal partial class Map
     {
@@ -23,7 +24,7 @@ namespace Snake2._0
             map = new int[y, x];
             InitializeMap();
             length = 3;
-            map[y / 2, x / 2] = 1;
+            map[y / 2, x / 2] = (int)Elements.Head;
             map[y / 2, x / 2 - 1] = 2;
             map[y / 2, x / 2 - 2] = 3;
         }
@@ -41,7 +42,7 @@ namespace Snake2._0
                     {
                         map[i, j] = (int)Elements.Wall;
                     }
-                    if (map[i, j] == 0)
+                    if (map[i, j] == (int)Elements.Empty)
                     {
                         emptyPlace += 1;
                     }
@@ -59,7 +60,7 @@ namespace Snake2._0
                         Console.SetCursorPosition(j, i);
                         Console.Write('#');
                     }
-                    if (map[i, j] == 0)
+                    if (map[i, j] == (int)Elements.Empty)
                     {
                         Console.SetCursorPosition(j, i);
                         Console.Write(' ');
@@ -74,11 +75,6 @@ namespace Snake2._0
                         Console.SetCursorPosition(j, i);
                         Console.Write('*');
                     }
-                    //if (map[i, j] == length + 1)
-                    //{
-                    //    Console.SetCursorPosition(j, i);
-                    //    Console.Write(' ');
-                    //}
                 }
             }
         }//отрисовка карты вместо со змейкой
@@ -89,9 +85,9 @@ namespace Snake2._0
             {
                 int _x = random.Next(0, x);
                 int _y = random.Next(0, y);
-                if (map[_y, _x] == 0)
+                if (map[_y, _x] == (int)Elements.Empty)
                 {
-                    map[_y, _x] = -2;
+                    map[_y, _x] = (int)Elements.Apple;
                     Console.SetCursorPosition(_x, _y);
                     Console.Write('$');
                     break;

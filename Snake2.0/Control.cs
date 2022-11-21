@@ -12,7 +12,7 @@ namespace Snake2._0
     }
     internal static class Control
     {
-        public static Direct MyDirection { get; set; } = Direct.Right;
+        public static Direct MyDirection { get; set; }
         public static bool Speed { get; set; } = false;
         public static void SetDirection()
         {
@@ -48,14 +48,7 @@ namespace Snake2._0
                 {
                     MyDirection = Direct.Left;
                 }
-                if (Speed)
-                {
-                    Thread.Sleep(70);
-                }
-                else
-                {
-                    Thread.Sleep(250);
-                }
+                Thread.Sleep(250);
             }
         }
     }

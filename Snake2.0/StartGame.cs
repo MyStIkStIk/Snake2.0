@@ -25,6 +25,7 @@ namespace Snake2._0
                 Console.SetBufferSize(MapSize.Width, MapSize.Height);
                 myMap = new Map();
                 myMap.Start();
+                Control.MyDirection = Direct.Right;
                 Task.Run(() => Control.SetDirection());
                 while (!myMap.lose && !myMap.win)
                 {
